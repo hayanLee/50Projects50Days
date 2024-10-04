@@ -1,0 +1,74 @@
+.flex-center, .num, .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.container {
+  margin: 0 auto;
+  width: 350px;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.steps {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.steps::before {
+  content: "";
+  background-color: rgb(215, 215, 215);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: -1;
+}
+
+#progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  border: 2px solid skyblue;
+  z-index: -1;
+  transition: width 0.5s;
+}
+
+.num {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgb(215, 215, 215);
+  border-radius: 50%;
+  background-color: white;
+}
+
+.active {
+  border-color: skyblue;
+}
+
+.buttons {
+  margin-top: 2rem;
+}
+.buttons button {
+  padding: 0.5rem 1.2rem;
+  background-color: skyblue;
+  border: none;
+  border-radius: 10%;
+}
+.buttons button:not(:disabled):hover {
+  cursor: pointer;
+  background-color: #b3e0f2;
+}
+
+#prev {
+  margin-right: 1rem;
+}/*# sourceMappingURL=style.css.map */

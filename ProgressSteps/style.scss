@@ -1,0 +1,92 @@
+$colors: (
+    accent: skyblue,
+    default: rgb(215, 215, 215),
+    background: white,
+);
+
+$accent-color: map-get(
+    $map: $colors,
+    $key: accent,
+);
+
+$default-color: map-get(
+    $map: $colors,
+    $key: default,
+);
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.container {
+    @extend .flex-center;
+    margin: 0 auto;
+    width: 350px;
+    height: 100vh;
+    flex-direction: column;
+}
+.steps {
+    position: relative;
+    &::before {
+        content: '';
+        background-color: $default-color;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        z-index: -1;
+    }
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+#progress {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    border: 2px solid $accent-color;
+    z-index: -1;
+    transition: width 0.5s;
+}
+.num {
+    @extend .flex-center;
+    width: 30px;
+    height: 30px;
+    border: 3px solid $default-color;
+    border-radius: 50%;
+    background-color: map-get($map: $colors, $key: background);
+}
+.active {
+    border-color: $accent-color;
+}
+
+@mixin button-styles($color) {
+    padding: 0.5rem 1.2rem;
+    color: map-get($map: $colors, $key: text);
+    background-color: $color;
+    border: none;
+    border-radius: 10%;
+    &:not(:disabled):hover {
+        cursor: pointer;
+        background-color: lighten($color, $amount: 10%);
+    }
+}
+
+.buttons {
+    margin-top: 2rem;
+    button {
+        @include button-styles($accent-color);
+    }
+}
+#prev {
+    margin-right: 1rem;
+}
